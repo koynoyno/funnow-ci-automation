@@ -34,7 +34,8 @@ export default defineConfig({
     baseURL: 'https://stg2-www.myfunnow.com/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
+    // trace: 'on-first-retry',
 
     locale: 'zh-TW',
     timezoneId: 'Asia/Taipei',
@@ -56,25 +57,25 @@ export default defineConfig({
       dependencies: ['setup'],
     },
 
-    {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-        // Use prepared auth state.
-        storageState: '.auth/user.json',
-      },
-      dependencies: ['setup'],
-    },
+    // {
+    //   name: 'firefox',
+    //   use: {
+    //     ...devices['Desktop Firefox'],
+    //     // Use prepared auth state.
+    //     storageState: '.auth/user.json',
+    //   },
+    //   dependencies: ['setup'],
+    // },
 
-    {
-      name: 'webkit',
-      use: {
-        ...devices['Desktop Safari'],
-        // Use prepared auth state.
-        storageState: '.auth/user.json',
-      },
-      dependencies: ['setup'],
-    },
+    // {
+    //   name: 'webkit',
+    //   use: {
+    //     ...devices['Desktop Safari'],
+    //     // Use prepared auth state.
+    //     storageState: '.auth/user.json',
+    //   },
+    //   dependencies: ['setup'],
+    // },
 
     /* Test against mobile viewports. */
     // {
