@@ -12,7 +12,7 @@ const LOGIN_PARAMS = {
     "verification_token": "0"
 }
 
-// API authentication, faster
+// API authentication, faster (~600ms)
 setup('authenticate', async ({ request }) => {
     await request.post('/v2/funnow/login', {
         data: LOGIN_PARAMS
@@ -20,7 +20,10 @@ setup('authenticate', async ({ request }) => {
     await request.storageState({ path: authFile });
 });
 
-// UI authentication, slower
+// UI authentication, slower (~8000ms)
+// setup.use({
+//     locale: 'en',
+// });
 // setup('authenticate', async ({ page }) => {
 //     await page.goto('/');
 //     await expect(page).toHaveTitle(/FunNow/);

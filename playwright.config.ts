@@ -1,6 +1,13 @@
 import 'dotenv/config';
 import { defineConfig, devices } from '@playwright/test';
 
+const testRailOptions = {
+  // Whether to add <properties> with all annotations; default is false
+  embedAnnotationsAsProperties: true,
+  // Where to put the report.
+  outputFile: './test-results/junit-report.xml'
+};
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -25,7 +32,11 @@ export default defineConfig({
   // reporter: 'html',
   // 'github' for GitHub Actions CI to generate annotations, plus a concise 'dot'
   // default 'list' when running locally
-  reporter: process.env.CI ? 'github' : 'html',
+  // reporter: process.env.CI ? 'github' : [
+  reporter: process.env.CI ? [
+    ['github'],
+    ['junit', testRailOptions]
+  ] : 'list',
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {

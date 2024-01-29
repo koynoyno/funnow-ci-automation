@@ -34,3 +34,20 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 7
+    - name: Upload results to TestRail
+      if: always()
+      run: |
+        pip install trcli
+        trcli -y \
+          -h TRCLI_INSTANCE \
+          --project "FunNow CI" \
+          -u TRCLI_USERNAME \
+          -p TRCLI_PASSWORD \
+          parse_junit \
+          --title "Automated Tests from GitHub workflow" \
+          --run-description ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} \
+          -f "test-results/junit-report.xml"
+      env:
+        TRCLI_USERNAME: ${{ secrets.TRCLI_USERNAME }}
+        TRCLI_PASSWORD: ${{ secrets.TRCLI_PASSWORD }}
+        TRCLI_INSTANCE: ${{ secrets.TRCLI_INSTANCE }}
