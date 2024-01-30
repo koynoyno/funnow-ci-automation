@@ -1,4 +1,4 @@
-// Note: Authentication setup through API and UI, used before all tests
+// Note: Authentication request, used before all tests
 
 import { test as setup, expect } from '@playwright/test';
 import { AUTH_PARAMS } from '../../data/auth';

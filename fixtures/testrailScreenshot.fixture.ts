@@ -10,7 +10,7 @@ export const test = base.extend<{ testrailScreenshot: void }>({
         // following code is equal to .afterEach hook
         if (testInfo.status !== testInfo.expectedStatus) {
             let screenshotPath = `test-results/screenshots/screenshot-${randomUUID()}.png`;
-            await page.screenshot({ path: screenshotPath, fullPage: true });
+            await page.screenshot({ path: screenshotPath });
             testInfo.annotations.push({ type: 'testrail_attachment', description: screenshotPath });
         }
     }, { auto: true }],
