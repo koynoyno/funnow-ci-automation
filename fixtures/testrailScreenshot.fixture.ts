@@ -1,7 +1,7 @@
 // Note: TestRail screenshot generation for failed tests
 
 import { test as base } from '@playwright/test';
-import { randomUUID } from 'crypto';
+import { v4 as randomUUID } from 'uuid';
 
 export const test = base.extend<{ testrailScreenshot: void }>({
     testrailScreenshot: [async ({ page }, use, testInfo) => {

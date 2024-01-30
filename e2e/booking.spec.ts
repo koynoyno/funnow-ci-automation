@@ -1,6 +1,6 @@
 // Note: booking flow (happy path)
 
-import { test, expect } from '../fixtures';
+import { test, expect } from '../fixtures/fixtures';
 import { mastercard } from '../data/creditCards';
 
 const SPECIAL_REQUEST = 'special request'

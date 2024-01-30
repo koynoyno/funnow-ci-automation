@@ -12,7 +12,7 @@
     "@types/node": "^20.11.5"
   },
   "dependencies": {
-    "crypto": "^1.0.1",
-    "dotenv": "^16.4.1"
+    "dotenv": "^16.4.1",
+    "uuid": "^9.0.1"
   }
 }
