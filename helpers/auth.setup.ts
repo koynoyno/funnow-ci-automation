@@ -3,7 +3,7 @@
 import { test as setup, expect } from '@playwright/test';
 import { AUTH_PARAMS } from '../data/auth';
 
-const authFile = '.auth/user.json';
+const authFile = '../.auth/user.json';
 
 // API authentication, fast (~600ms)
 setup('authenticate', async ({ request }) => {
