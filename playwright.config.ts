@@ -18,6 +18,8 @@ const testRailOptions = {
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  /* to make tests fail faster */
+  timeout: 5 * 1000,
   testDir: './e2e',
   // outputDir: './test-results',
   /* Run tests in files in parallel */
@@ -56,7 +58,10 @@ export default defineConfig({
   projects: [
 
     // Setup project
-    { name: 'setup', testMatch: /.*\.setup\.ts/ },
+    {
+      name: 'setup',
+      testMatch: /.*\.setup\.ts/,
+    },
 
     {
       name: 'chromium',
