@@ -18,8 +18,8 @@ const testRailOptions = {
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  /* to make tests fail faster */
-  timeout: 5 * 1000,
+  /* tests fail after 10s on CI and after 5s locally */
+  timeout: process.env.CI ? 10 * 1000 : 5 * 1000,
   testDir: './e2e',
   // outputDir: './test-results',
   /* Run tests in files in parallel */
@@ -38,7 +38,7 @@ export default defineConfig({
   reporter: process.env.CI ? [
     ['github'],
     ['junit', testRailOptions]
-  ] : 'list',
+  ] : [['list'], ['junit', testRailOptions]],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {

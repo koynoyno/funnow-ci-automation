@@ -9,7 +9,6 @@ test.use({
   locale: 'en',
 });
 
-
 test('Branch link opens a branch page', async ({ page }) => {
   await page.goto('/regions/1/search');
 
