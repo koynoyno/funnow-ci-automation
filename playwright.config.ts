@@ -11,7 +11,7 @@ export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  // retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: process.env.CI ? [
     ['github'],
@@ -20,8 +20,7 @@ export default defineConfig({
 
   use: {
     baseURL: 'https://stg2-www.myfunnow.com/',
-    trace: 'retain-on-failure',
-    // trace: 'on-first-retry',
+    trace: 'on-first-retry',
     locale: 'zh-TW',
     timezoneId: 'Asia/Taipei',
   },
