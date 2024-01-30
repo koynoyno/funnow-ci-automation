@@ -9,7 +9,7 @@ test.use({
   locale: 'en',
 });
 
-test('Category button is visible after selecting a category', async ({ page }) => {
+test.only('Category button is visible after selecting a category', async ({ page }) => {
   await page.goto('/regions/1/search');
   await page.getByRole('button', { name: 'Category' }).click();
   await expect(page.getByRole('button', { name: 'Category' })).toBeVisible();

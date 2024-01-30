@@ -7,7 +7,7 @@
 */
 
 import { mergeTests } from '@playwright/test';
-import { test as testrailScreenshot } from './helpers/testrailScreenshot.fixture';
+import { test as testrailScreenshot } from './e2e/helpers/testrailScreenshot.fixture';
 
 export const test = mergeTests(testrailScreenshot);
 export { expect } from '@playwright/test';

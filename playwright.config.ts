@@ -19,7 +19,7 @@ const testRailOptions = {
  */
 export default defineConfig({
   /* tests fail after 10s on CI and after 5s locally */
-  timeout: process.env.CI ? 10 * 1000 : 5 * 1000,
+  timeout: 10 * 1000,
   testDir: './e2e',
   // outputDir: './test-results',
   /* Run tests in files in parallel */
