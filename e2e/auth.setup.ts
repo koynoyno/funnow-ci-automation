@@ -1,21 +1,12 @@
 import { test as setup, expect } from '@playwright/test';
+import { AUTH_PARAMS } from '../data/auth';
 
 const authFile = '.auth/user.json';
-
-const LOGIN_PARAMS = {
-    "username": process.env.MYFUNNOW_USERNAME as string,
-    "password": process.env.MYFUNNOW_PASSWORD as string,
-    "os": "automation", // necessary fields, otherwise request will fail
-    "osVersion": "Playwright",
-    "appVersion": "1.0",
-    "deviceId": "PW",
-    "verification_token": "0"
-}
 
 // API authentication, faster (~600ms)
 setup('authenticate', async ({ request }) => {
     await request.post('/v2/funnow/login', {
-        data: LOGIN_PARAMS
+        data: AUTH_PARAMS
     });
     await request.storageState({ path: authFile });
 });
