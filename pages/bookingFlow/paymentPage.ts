@@ -50,9 +50,11 @@ export class BookingPayment {
     }
 
     async pay() {
-        await this.payButton.click();
+        await this.payButton.click({ delay: 500 });
         // HACK handle duplicate booking
-        try { await this.dialogDuplicateBookingButton.click(); } catch { }
+        if (await this.dialogDuplicateBookingButton.isVisible()) {
+            await this.dialogDuplicateBookingButton.click();
+        }
         await this.successfulTransactionOkButton.click();
     }
 }

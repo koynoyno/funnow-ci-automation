@@ -13,6 +13,7 @@ import { BookingDetails } from '../pages/bookingFlow/detailsPage';
 import { locales } from '../data/locales'
 
 const SPECIAL_REQUEST = '我可以要一間有好風景的房間嗎？';
+const BRANCH_ID = 2272
 
 for (const locale of locales) {
 
@@ -26,7 +27,7 @@ for (const locale of locales) {
       // test.slow()
       const header = new Header(page);
       const branchPage = new Branch(page, locale);
-      await branchPage.gotoBranch(880);
+      await branchPage.gotoBranch(BRANCH_ID);
       await expect(header.userMenuIcon).toBeVisible();
       await branchPage.selectFirstProduct();
       await branchPage.selectNearestBookingTime();

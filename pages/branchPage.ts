@@ -14,10 +14,9 @@ export class Branch {
         this.page = page;
         this.locale = locale;
         this.productList = page.getByLabel(locale.productList)
-        // was completely sold out during extensive testing
-        // this.controlSelectionRadio = page.locator('.v-input--selection-controls__ripple')
-        this.controlSelectionRadio = page
-            .locator('div:nth-child(2) > .v-input--selection-controls__input > .v-input--selection-controls__ripple')
+        this.controlSelectionRadio = page.locator('.v-input--selection-controls__ripple')
+        // this.controlSelectionRadio = page
+        //     .locator('div:nth-child(2) > .v-input--selection-controls__input > .v-input--selection-controls__ripple')
         this.productListOkButton = page.getByRole('button', { name: locale.okButton, exact: true })
         this.bookingTimeList = page.getByPlaceholder(locale.bookingTimeList)
         // HACK .last() is unreliable, use "data-testid" instead
@@ -32,12 +31,12 @@ export class Branch {
     }
 
     async selectNearestBookingTime() {
-        await this.bookingTimeList.click({ delay: 500 });
-        await this.bookingTimeOkButton.click();
+        await this.bookingTimeList.click();
+        await this.bookingTimeOkButton.click({ delay: 500 });
     }
 
     async gotoBookingPaymentPage() {
-        await this.nextButton.click();
+        await this.nextButton.click({ delay: 500 });
     }
 
     async gotoBranch(branchId: number) {
