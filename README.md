@@ -93,7 +93,7 @@ Some of them are easily verifiable, so they were implemented in the `bugs.spec.t
 
 ## trcli explanation
 
-After each CI run, test results are automatically uploaded to TestRail. You can find the related workflow step [here](.github/workflows/playwright.yml#L37-L49).
+After each CI run, test results are automatically uploaded to TestRail. You can find the related workflow step [here](.github/workflows/playwright.yml#L41-L53).
 
 Example of a successful test run:
 
