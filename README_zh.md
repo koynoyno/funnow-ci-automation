@@ -57,7 +57,7 @@ MYFUNNOW_PASSWORD=<password>
 
 ## ⚠️ 重要提示
 
-為了使被測系統（SUT）更容易測試，強烈建議實施 `data-testid` 屬性。因為 SUT 沒有使用 `data-testid`，定位器變得 [脆弱](pages/branchPage.ts#L25) 和 [難以閱讀](pages/branchPage.ts#L19)，這使得自動化過程不必要地複雜，並浪費開發人員的時間。
+為了使被測系統（system-under-test, SUT）更容易測試，強烈建議實施 `data-testid` 屬性。因為 SUT 沒有使用 `data-testid`，定位器變得 [脆弱](pages/branchPage.ts#L25) 和 [難以閱讀](pages/branchPage.ts#L19)，這使得自動化過程不必要地複雜，並浪費開發人員的時間。
 
 ## 問題與權衡
 
