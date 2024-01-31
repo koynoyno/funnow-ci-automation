@@ -69,7 +69,9 @@ Although it's [not recommended](https://martinfowler.com/bliki/PageObject.html) 
 
 #### Why are booking flow tests flaky?
 
-There's an issue where if a user makes too many bookings using the same time, they will be suddenly redirected to the time selection page instead of the payment page. In such cases, the website doesn't handle the error that's coming from the API.
+There's an issue where if a user makes too many bookings using the same time, they will be suddenly redirected to the time selection page instead of the payment page (see screenshot below). In such cases, the website doesn't handle the error that's coming from the API.
+
+![image](https://github.com/koynoyno/funnow-ci-automation/assets/46102189/d4918b91-df3e-409a-bd56-a199c4a55adf)
 
 API error as follows:
 
