@@ -2,7 +2,13 @@
   <a href="https://github.com/koynoyno/funnow-ci-automation/">
     <img width="200" src="https://github.com/koynoyno/funnow-ci-automation/assets/46102189/b24a85c8-cebc-4203-8ddd-22536079c725">
   </a>
-</p><br/><br/>
+	
+</p>
+<div align="center">
+	
+[![Playwright 測試](https://github.com/koynoyno/funnow-ci-automation/actions/workflows/playwright.yml/badge.svg)](https://github.com/koynoyno/funnow-ci-automation/actions/workflows/playwright.yml)
+
+</div>
 
 # FunNow Playwright 概念證明
 [英文](README.md) | 繁體中文
