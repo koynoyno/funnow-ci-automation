@@ -21,7 +21,7 @@ This proof-of-concept uses Playwright to test the [happy path of the booking flo
 
 ## Technologies Used
 
-- Playwright + [POM design pattern](https://playwright.dev/docs/pom "POM design pattern") + [parameterized tests](https://playwright.dev/docs/test-parameterize "parameterized tests")
+- Playwright + [POM design pattern](https://playwright.dev/docs/pom "POM design pattern") + [parameterized tests](https://playwright.dev/docs/test-parameterize "parameterized tests") + [fixtures](https://playwright.dev/docs/test-fixtures)
 - GitHub Actions + [caching](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows)
 - [trcli](https://github.com/gurock/trcli "trcli") (to automatically upload screenshots of failed tests to a TestRail instance)
 
