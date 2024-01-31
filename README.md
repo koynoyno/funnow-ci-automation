@@ -12,7 +12,7 @@ English | [繁體中文](README_zh.md)
 
 </div>
 
-# FunNow Playwright Proof-of-Concept
+# FunNow Playwright Automation Proof-of-Concept
 
 
 ## Description
