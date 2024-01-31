@@ -32,7 +32,7 @@ The project can be run locally. Clone the folder and create a `.env` file in the
 MYFUNNOW_USERNAME=<email>
 MYFUNNOW_PASSWORD=<password>
 ```
-Make sure test user has confirmed their phone number and already applied for test promocodes.
+Make sure test user has confirmed their phone number, already applied for test promocodes, and has saved credit card.
 
 Open a terminal, run `npm install`, and after that, you can launch tests using the `npx playwright test` command. Test suite runs against staging. 
 
