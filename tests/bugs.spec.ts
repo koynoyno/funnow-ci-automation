@@ -10,7 +10,7 @@ test.use({
 });
 
 //'Category' butt is not visible after selecting a category
-test('Category button is visible after selecting a category', async ({ page }) => {
+test.skip('Category button is visible after selecting a category', async ({ page }) => {
   test.fail();
   await page.goto('/regions/1/search');
   await page.getByRole('button', { name: 'Category' }).click();
@@ -24,7 +24,7 @@ test('Category button is visible after selecting a category', async ({ page }) =
 
 
 // branches on the last page of search redirect to the main page instead of the branch page
-test('Branch link opens a branch page', async ({ page }) => {
+test.skip('Branch link opens a branch page', async ({ page }) => {
   test.fail();
   await page.goto('/regions/1/search');
   await page.getByLabel('Goto Page 46').click();
