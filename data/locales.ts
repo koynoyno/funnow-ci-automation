@@ -66,7 +66,7 @@ export const locales: Locale[] = [
         testPromotion: '測試用 Promo Code (中文翻譯)',
         savedCreditCard: '選択中のクレジットカード',
         payButton: '支払い',
-        dialogDuplicateBooking: '同じ時間に予約があります',
+        dialogDuplicateBooking: '既に同じ日時に予約があります',
         dialogDuplicateBookingButton: '予約を続ける',
         dialogSuccesfulTransaction: '決済完了',
         bookingCompletedMessage: '予約確定',
