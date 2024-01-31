@@ -8,10 +8,12 @@
 	
 [![Playwright Tests](https://github.com/koynoyno/funnow-ci-automation/actions/workflows/playwright.yml/badge.svg)](https://github.com/koynoyno/funnow-ci-automation/actions/workflows/playwright.yml)
 
+English | [繁體中文](README_zh.md)
+
 </div>
 
 # FunNow Playwright Proof-of-Concept
-English | [繁體中文](README_zh.md)
+
 
 ## Description
 
