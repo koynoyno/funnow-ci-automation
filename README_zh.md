@@ -90,7 +90,7 @@ API 錯誤如下：
 
 ## trcli 說明
 
-每次 CI 運行後，測試結果會自動上傳到 TestRail。您可以在[這裡](.github/workflows/playwright.yml#L37-L49)找到相關的工作流程步驟。
+每次 CI 運行後，測試結果會自動上傳到 TestRail。您可以在[這裡](.github/workflows/playwright.yml#L41-L53)找到相關的工作流程步驟。
 
 成功測試運行的示例：
 
