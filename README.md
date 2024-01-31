@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://github.com/koynoyno/funnow-ci-automation/">
+    <img width="200" src="https://github.com/koynoyno/funnow-ci-automation/assets/46102189/b24a85c8-cebc-4203-8ddd-22536079c725">
+  </a>
+</p><br/><br/>
+
 # FunNow Playwright Proof-of-Concept
 English | [繁體中文](README_zh.md)
 
