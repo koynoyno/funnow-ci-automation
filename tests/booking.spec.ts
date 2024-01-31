@@ -1,11 +1,10 @@
 /*
   Note: booking flow (happy path) 
-  Tests are using locales to test the booking flow in different languages.
-  Tests are using page objects to adhere for SOLID and DRY principles.
+  Tests is parameterized, to test the booking flow in different locales.
+  Tests is using page objects to adhere for SOLID principles.
 */
 
-import { test, expect } from '../fixtures/fixtures';
-import { mastercard } from '../data/creditCards';
+import { test, expect } from '../fixtures/autoFixtures';
 import { Header } from '../pages/headerPage';
 import { Branch } from '../pages/branchPage';
 import { BookingPayment } from '../pages/bookingFlow/paymentPage';
@@ -13,24 +12,28 @@ import { BookingDetails } from '../pages/bookingFlow/detailsPage';
 import { locales } from '../data/locales'
 
 const SPECIAL_REQUEST = '我可以要一間有好風景的房間嗎？';
-const BRANCH_ID = 2272
+const BRANCH_ID = 73
 
 for (const locale of locales) {
 
-  test.describe(`[${locale.locale}] Booking Flow`, () => {
+  const LOCALE_NAME = locale.name;
+  test.describe(`Booking Flow`, () => {
 
+    // apply user locale
     test.use({
-      locale: locale.locale,
+      locale: LOCALE_NAME,
     });
 
-    test(`Happy path (${locale.locale})`, async ({ page }) => {
-      // test.slow()
+    test(`Happy path (${LOCALE_NAME})`, async ({ page }) => {
+      // test.slow() // 3x increase of timeout
       const header = new Header(page);
       const branchPage = new Branch(page, locale);
       await branchPage.gotoBranch(BRANCH_ID);
       await expect(header.userMenuIcon).toBeVisible();
       await branchPage.selectFirstProduct();
+      await expect(branchPage.productDialog).not.toBeVisible()
       await branchPage.selectNearestBookingTime();
+      await expect(branchPage.bookingTimeDialog).not.toBeVisible()
       await branchPage.gotoBookingPaymentPage();
 
       const bookingPaymentPage = new BookingPayment(page, locale);

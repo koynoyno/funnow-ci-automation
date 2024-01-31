@@ -1,9 +1,9 @@
 /*
   Note: active bugs on web. These test are expected to fail until the bugs are fixed.
-  These tests aren't using page objects or locales for the sake of simplicity.
+  These tests aren't using page objects for the sake of simplicity.
 */
 
-import { test, expect } from '../fixtures/fixtures';
+import { test, expect } from '../fixtures/autoFixtures';
 
 test.use({
   locale: 'en',

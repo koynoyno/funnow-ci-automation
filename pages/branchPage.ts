@@ -9,6 +9,8 @@ export class Branch {
     readonly bookingTimeOkButton: Locator;
     readonly bookingTimeList: Locator;
     readonly nextButton: Locator;
+    readonly productDialog: Locator;
+    readonly bookingTimeDialog: Locator;
 
     constructor(page: Page, locale: Locale) {
         this.page = page;
@@ -22,6 +24,8 @@ export class Branch {
         // HACK .last() is unreliable, use "data-testid" instead
         this.bookingTimeOkButton = page.getByRole('button', { name: locale.okButton, exact: true }).last()
         this.nextButton = page.getByRole('button', { name: locale.nextButton })
+        this.productDialog = page.locator('div.v-card__title').filter({ hasText: locale.productList })
+        this.bookingTimeDialog = page.locator('div.v-card__title').filter({ hasText: locale.bookingTimeList })
     }
 
     async selectFirstProduct() {

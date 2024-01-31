@@ -1,4 +1,4 @@
-import { type Locator, type Page } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 import { Locale } from '../../data/locales'
 
 export class BookingPayment {
@@ -10,6 +10,7 @@ export class BookingPayment {
     readonly promotionDialogOkButton: Locator;
     readonly savedCreditCard: Locator;
     readonly payButton: Locator;
+    readonly dialogDuplicateBooking: Locator;
     readonly dialogDuplicateBookingButton: Locator;
     readonly dialogSuccesfulTransaction: Locator;
     readonly continueBookingButton: Locator;
@@ -25,6 +26,7 @@ export class BookingPayment {
         this.savedCreditCard = page.getByText(locale.savedCreditCard)
         this.payButton = page.getByRole('button', { name: locale.payButton })
 
+        this.dialogDuplicateBooking = page.getByText(locale.dialogDuplicateBooking)
         this.dialogDuplicateBookingButton = page
             .getByRole('button', { name: locale.dialogDuplicateBookingButton })
         this.dialogSuccesfulTransaction = page.getByText(locale.dialogSuccesfulTransaction);
@@ -36,7 +38,6 @@ export class BookingPayment {
     async fillSpecialRequest(specialRequest: string) {
         await this.specialRequestField.click();
         await this.specialRequestField.fill(specialRequest);
-
     }
 
     async selectTestPromotion() {
@@ -50,10 +51,12 @@ export class BookingPayment {
     }
 
     async pay() {
-        await this.payButton.click({ delay: 500 });
-        // HACK handle duplicate booking
-        if (await this.dialogDuplicateBookingButton.isVisible()) {
+        await this.payButton.click();
+        await expect(this.dialogSuccesfulTransaction.or(this.dialogDuplicateBookingButton).first())
+            .toBeVisible()
+        if (await this.dialogDuplicateBooking.isVisible()) {
             await this.dialogDuplicateBookingButton.click();
+            expect(this.dialogDuplicateBooking).not.toBeVisible()
         }
         await this.successfulTransactionOkButton.click();
     }
