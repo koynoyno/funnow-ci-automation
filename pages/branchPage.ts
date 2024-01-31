@@ -36,7 +36,7 @@ export class Branch {
     }
 
     async gotoBookingPaymentPage() {
-        await this.nextButton.click({ delay: 500 });
+        await this.nextButton.click();
     }
 
     async gotoBranch(branchId: number) {
