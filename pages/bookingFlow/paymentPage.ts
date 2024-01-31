@@ -1,9 +1,11 @@
 import { type Locator, type Page } from '@playwright/test';
+import { Locale } from '../../data/locales'
 
 export class BookingPayment {
     readonly page: Page;
+    readonly locale: Locale;
     readonly specialRequestField: Locator;
-    readonly selectPromotionButton: Locator;
+    readonly promotionButton: Locator;
     readonly testPromotion: Locator;
     readonly promotionDialogOkButton: Locator;
     readonly savedCreditCard: Locator;
@@ -13,18 +15,22 @@ export class BookingPayment {
     readonly continueBookingButton: Locator;
     readonly successfulTransactionOkButton: Locator;
 
-    constructor(page: Page) {
+    constructor(page: Page, locale: Locale) {
         this.page = page;
-        this.specialRequestField = page.getByPlaceholder('Tell us your needs. We will')
-        this.selectPromotionButton = page.getByRole('button', { name: 'Select A Promotion' })
-        this.testPromotion = page.getByText('測試用 Promo Code (中文翻譯)')
-        this.promotionDialogOkButton = page.getByRole('button', { name: 'OK' })
-        this.savedCreditCard = page.getByText('My Credit Card')
-        this.payButton = page.getByRole('button', { name: 'Pay TWD' })
+        this.locale = locale;
+        this.specialRequestField = page.getByPlaceholder(locale.specialRequestField)
+        this.promotionButton = page.getByRole('button', { name: locale.promotionButton })
+        this.testPromotion = page.getByText(locale.testPromotion)
+        this.promotionDialogOkButton = page.getByRole('button', { name: locale.okButton })
+        this.savedCreditCard = page.getByText(locale.savedCreditCard)
+        this.payButton = page.getByRole('button', { name: locale.payButton })
 
-        this.dialogDuplicateBookingButton = page.getByRole('button', { name: 'Continue booking' })
-        this.dialogSuccesfulTransaction = page.getByText('Successful Transaction');
-        this.successfulTransactionOkButton = page.getByRole('button', { name: 'OK', exact: true })
+        this.dialogDuplicateBookingButton = page
+            .getByRole('button', { name: locale.dialogDuplicateBookingButton })
+        this.dialogSuccesfulTransaction = page.getByText(locale.dialogSuccesfulTransaction);
+        this.successfulTransactionOkButton = page
+            .locator('div.dialog-container')
+            .getByRole('button', { name: locale.okButton, exact: true })
     }
 
     async fillSpecialRequest(specialRequest: string) {
@@ -34,7 +40,7 @@ export class BookingPayment {
     }
 
     async selectTestPromotion() {
-        await this.selectPromotionButton.click();
+        await this.promotionButton.click();
         await this.testPromotion.click();
         await this.promotionDialogOkButton.click();
     }
@@ -45,9 +51,7 @@ export class BookingPayment {
 
     async pay() {
         await this.payButton.click();
-        // Handle duplicate booking
-        // if (await this.dialogDuplicateBookingButton.isVisible())
-        // HACK
+        // HACK handle duplicate booking
         try { await this.dialogDuplicateBookingButton.click(); } catch { }
         await this.successfulTransactionOkButton.click();
     }

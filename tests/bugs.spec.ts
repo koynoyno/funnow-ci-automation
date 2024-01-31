@@ -1,5 +1,6 @@
 /*
   Note: active bugs on web. These test are expected to fail until the bugs are fixed.
+  These tests aren't using page objects or locales for the sake of simplicity.
 */
 
 import { test, expect } from '../fixtures/fixtures';
@@ -26,7 +27,6 @@ test('Category button is visible after selecting a category', async ({ page }) =
 test('Branch link opens a branch page', async ({ page }) => {
   test.fail();
   await page.goto('/regions/1/search');
-  // label value and branch name are hardcoded for the sake of simplicity
   await page.getByLabel('Goto Page 46').click();
   const branchLink = await page.getByRole('link', { name: 'Hot 哈拉影城 From TWD 240 0 (0)' });
   const branchUrl = await branchLink.getAttribute('href');

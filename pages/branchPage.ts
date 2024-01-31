@@ -1,7 +1,8 @@
 import { type Locator, type Page } from '@playwright/test';
-
+import { Locale } from '../data/locales'
 export class Branch {
     readonly page: Page;
+    readonly locale: Locale;
     readonly productList: Locator;
     readonly controlSelectionRadio: Locator;
     readonly productListOkButton: Locator;
@@ -9,15 +10,19 @@ export class Branch {
     readonly bookingTimeList: Locator;
     readonly nextButton: Locator;
 
-    constructor(page: Page) {
+    constructor(page: Page, locale: Locale) {
         this.page = page;
-        this.productList = page.getByLabel('Select product')
-        this.controlSelectionRadio = page.locator('.v-input--selection-controls__ripple')
-        this.productListOkButton = page.getByRole('button', { name: 'OK', exact: true })
-        this.bookingTimeList = page.getByPlaceholder('Select Booking Time')
+        this.locale = locale;
+        this.productList = page.getByLabel(locale.productList)
+        // was completely sold out during extensive testing
+        // this.controlSelectionRadio = page.locator('.v-input--selection-controls__ripple')
+        this.controlSelectionRadio = page
+            .locator('div:nth-child(2) > .v-input--selection-controls__input > .v-input--selection-controls__ripple')
+        this.productListOkButton = page.getByRole('button', { name: locale.okButton, exact: true })
+        this.bookingTimeList = page.getByPlaceholder(locale.bookingTimeList)
         // HACK .last() is unreliable, use "data-testid" instead
-        this.bookingTimeOkButton = page.getByRole('button', { name: 'OK', exact: true }).last()
-        this.nextButton = page.getByRole('button', { name: 'Next (TWD 2500)' })
+        this.bookingTimeOkButton = page.getByRole('button', { name: locale.okButton, exact: true }).last()
+        this.nextButton = page.getByRole('button', { name: locale.nextButton })
     }
 
     async selectFirstProduct() {
@@ -27,7 +32,7 @@ export class Branch {
     }
 
     async selectNearestBookingTime() {
-        await this.bookingTimeList.click();
+        await this.bookingTimeList.click({ delay: 500 });
         await this.bookingTimeOkButton.click();
     }
 
@@ -39,3 +44,4 @@ export class Branch {
         await this.page.goto(`/branches/${branchId}`);
     }
 }
+
