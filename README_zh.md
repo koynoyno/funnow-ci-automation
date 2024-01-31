@@ -8,10 +8,11 @@
 	
 [![Playwright 測試](https://github.com/koynoyno/funnow-ci-automation/actions/workflows/playwright.yml/badge.svg)](https://github.com/koynoyno/funnow-ci-automation/actions/workflows/playwright.yml)
 
+[英文](README.md) | 繁體中文
+
 </div>
 
 # FunNow Playwright 概念證明
-[英文](README.md) | 繁體中文
 
 ## 描述
 
