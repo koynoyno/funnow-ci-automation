@@ -15,12 +15,12 @@ English | [繁體中文](README_zh.md)
 
 ## Description
 
-This proof-of-concept uses Playwright to test the happy path of the booking flow for every language on the FunNow website. It automatically runs on GitHub Actions for each commit and Pull Request and automatically uploads testing results to a TestRail instance using `trcli`.
+This proof-of-concept uses Playwright to test the [happy path of the booking flow](tests/booking.spec.ts) for every language on the FunNow website. It automatically runs on GitHub Actions for each commit and Pull Request (CI/CD) and automatically uploads testing results to a TestRail instance using `trcli`.
 
 ## Technologies Used
 
 - Playwright + [POM design pattern](https://playwright.dev/docs/pom "POM design pattern") + [parameterized tests](https://playwright.dev/docs/test-parameterize "parameterized tests")
-- GitHub Actions + caching
+- GitHub Actions + [caching](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows)
 - [trcli](https://github.com/gurock/trcli "trcli") (to automatically upload screenshots of failed tests to a TestRail instance)
 
 ## Getting Started
@@ -30,7 +30,9 @@ The project can be run locally. Clone the folder and create a `.env` file in the
 MYFUNNOW_USERNAME=<email>
 MYFUNNOW_PASSWORD=<password>
 ```
-Open a terminal, run `npm install`, and after that, you can launch tests using the `npx playwright test` command.
+Make sure test user has confirmed their phone number and already applied for test promocodes.
+
+Open a terminal, run `npm install`, and after that, you can launch tests using the `npx playwright test` command. Test suite runs against staging. 
 
 ## Project structure
 ```
