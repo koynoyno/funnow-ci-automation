@@ -23,7 +23,7 @@ for (const locale of locales) {
     });
 
     test(`Happy path (${locale.locale})`, async ({ page }) => {
-      test.slow()
+      // test.slow()
       const header = new Header(page);
       const branchPage = new Branch(page, locale);
       await branchPage.gotoBranch(880);
