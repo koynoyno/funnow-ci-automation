@@ -31,7 +31,7 @@
 MYFUNNOW_USERNAME=<email>
 MYFUNNOW_PASSWORD=<password>
 ```
-確保測試用戶已確認他們的電話號碼並且已經申請了測試促銷代碼。
+確保測試用戶已確認他們的電話號碼，已經申請了測試促銷代碼，並且已儲存信用卡資訊。
 
 打開終端，`npm install`，之後你可以使用 `npx playwright test` 命令啟動測試。 測試套件針對暫存環境運行。
 
