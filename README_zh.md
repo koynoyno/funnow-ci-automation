@@ -20,7 +20,7 @@
 
 ## 使用技術
 
-- Playwright + [POM 設計模式](https://playwright.dev/docs/pom "POM 設計模式") + [參數化測試](https://playwright.dev/docs/test-parameterize "參數化測試")
+- Playwright + [POM 設計模式](https://playwright.dev/docs/pom "POM 設計模式") + [參數化測試](https://playwright.dev/docs/test-parameterize "參數化測試") + [固件](https://playwright.dev/docs/test-fixtures)
 - GitHub Actions + [快取](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows)
 - [trcli](https://github.com/gurock/trcli "trcli")（自動將失敗測試的截圖上傳到 TestRail 實例）
 
