@@ -65,7 +65,7 @@ To make the system-under-test (SUT) more testable, it is **[HIGHLY SUGGESTED](ht
 
 #### Why Page Objects use assertions?
 
-Although it's [not recommended](https://martinfowler.com/bliki/PageObject.html) to use assertions inside Page Objects, the behavior of the system-under-test (SUT) can sometimes be unpredictable. Therefore, this proof-of-concept uses locators inside Page Objects for the sake of simplicity.
+Although it's [not recommended](https://martinfowler.com/bliki/PageObject.html) to use assertions inside Page Objects, the behavior of the system-under-test (SUT) can sometimes be unpredictable. Therefore, this proof-of-concept uses assertions inside Page Objects for the sake of simplicity.
 
 #### Why are booking flow tests flaky?
 
