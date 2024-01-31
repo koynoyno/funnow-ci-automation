@@ -15,12 +15,12 @@
 
 ## 描述
 
-此概念證明使用 Playwright 測試 FunNow 網站所有語言的預訂流程正常路徑。每次提交和拉取請求時，它會自動在 GitHub Actions 上運行，並使用 `trcli` 自動將測試結果上傳到 TestRail 實例。
+此概念證明使用 Playwright 測試 FunNow 網站所有語言的預訂流程正常路徑。每次提交和拉取請求時，它會自動在 GitHub Actions 上運行（CI/CD），並使用 `trcli` 自動將測試結果上傳到 TestRail 實例。
 
 ## 使用技術
 
 - Playwright + [POM 設計模式](https://playwright.dev/docs/pom "POM 設計模式") + [參數化測試](https://playwright.dev/docs/test-parameterize "參數化測試")
-- GitHub Actions + 快取
+- GitHub Actions + [快取](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows)
 - [trcli](https://github.com/gurock/trcli "trcli")（自動將失敗測試的截圖上傳到 TestRail 實例）
 
 ## 開始使用
@@ -30,7 +30,9 @@
 MYFUNNOW_USERNAME=<email>
 MYFUNNOW_PASSWORD=<password>
 ```
-打開終端，`npm install`，之後你可以使用 `npx playwright test` 命令啟動測試。
+確保測試用戶已確認他們的電話號碼並且已經申請了測試促銷代碼。
+
+打開終端，`npm install`，之後你可以使用 `npx playwright test` 命令啟動測試。 測試套件針對暫存環境運行。
 
 ## 專案結構
 ```
