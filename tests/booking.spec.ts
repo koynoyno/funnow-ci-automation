@@ -1,7 +1,7 @@
 /*
   Note: booking flow (happy path) 
   Tests is parameterized, to test the booking flow in different locales.
-  Tests is using page objects to adhere for SOLID principles.
+  Tests is using page objects to adhere to SOLID principles.
 */
 
 import { test, expect } from '../fixtures/autoFixtures';
