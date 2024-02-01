@@ -38,8 +38,8 @@ for (const locale of locales) {
 
       const bookingPaymentPage = new BookingPayment(page, locale);
       await bookingPaymentPage.fillSpecialRequest(SPECIAL_REQUEST);
-      await bookingPaymentPage.selectTestPromotion();
-      await bookingPaymentPage.selectSavedCreditCard();
+      await bookingPaymentPage.selectPromotionCoupon();
+      await bookingPaymentPage.selectPayment();
       await bookingPaymentPage.pay();
 
       const bookingDetailsPage = new BookingDetails(page, locale);

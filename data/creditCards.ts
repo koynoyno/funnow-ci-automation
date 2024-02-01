@@ -7,9 +7,3 @@ export const mastercard = {
     "expirationDate": "12/30",
     "cvv": "123"
 }
-
-export const visa = {
-    "cardNumber": "4242424242424242",
-    "expirationDate": "12/30",
-    "cvv": "123"
-}
