@@ -35,6 +35,9 @@ for (const locale of locales) {
       await branchPage.selectNearestBookingTime();
       await expect(branchPage.bookingTimeDialog).not.toBeVisible()
       await branchPage.gotoBookingPaymentPage();
+      await expect(page, `test might fail here because of the bug
+      See https://github.com/koynoyno/funnow-ci-automation/?tab=readme-ov-file#why-are-booking-flow-tests-flaky`)
+        .toHaveURL(/.*booking/);
 
       const bookingPaymentPage = new BookingPayment(page, locale);
       await bookingPaymentPage.fillSpecialRequest(SPECIAL_REQUEST);
