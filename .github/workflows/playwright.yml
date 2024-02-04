@@ -10,11 +10,14 @@ on:
       - '**.md'
 
 jobs:
-  
+
   # javascript
   Playwright-JS:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./playwright-js
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -27,6 +30,7 @@ jobs:
           ~/.cache/ms-playwright
         key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
+      id: install
       run: npm ci
     - run: npx playwright install --with-deps
       if: steps.playwright-cache.outputs.cache-hit != 'true'
@@ -38,11 +42,11 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: playwright-report
+        name: playwright-report-javascript
         path: playwright-js/test-results
         retention-days: 7
     - name: Upload results to TestRail
-      if: always()
+      if: steps.install.outcome == 'success'
       run: |
         pip install trcli
         trcli -y \
@@ -52,6 +56,62 @@ jobs:
           -p ${{ secrets.TRCLI_PASSWORD }} \
           parse_junit \
           --title "Playwright JS Tests from GitHub workflow" \
+          --run-description ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} \
+          --file "./test-results/junit-report.xml"
+
+  # python
+  Playwright-Python:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./playwright-python
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Ensure browsers are installed
+      id: install
+      run: python -m playwright install --with-deps
+    - uses: actions/cache@v4
+      id: playwright-cache
+      with:
+        path: |
+          ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ hashFiles('**/requirements.txt') }}
+    - name: Run Playwright (Python) tests
+      run: |
+        pytest \
+          --tracing=retain-on-failure \
+          --screenshot=only-on-failure \
+          --junitxml="test-results/junit-report.xml" \
+          "./tests"
+      env:
+        MYFUNNOW_USERNAME: ${{ secrets.MYFUNNOW_USERNAME }}
+        MYFUNNOW_PASSWORD: ${{ secrets.MYFUNNOW_PASSWORD }}
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-report-python
+        path: playwright-python/test-results/
+        retention-days: 7
+    - name: Upload results to TestRail
+      if: steps.install.outcome == 'success'
+      run: |
+        pip install trcli
+        trcli -y \
+          -h ${{ secrets.TRCLI_INSTANCE }} \
+          --project "FunNow CI" \
+          -u ${{ secrets.TRCLI_USERNAME }} \
+          -p ${{ secrets.TRCLI_PASSWORD }} \
+          parse_junit \
+          --title "Playwright Python Tests from GitHub workflow" \
           --run-description ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} \
           --file "./playwright-js/test-results/junit-report.xml"
 

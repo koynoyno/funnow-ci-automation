@@ -1,0 +1,10 @@
+.env
+.venv
+__pycache__/
+test-results/
+playwright-report/
+blob-report/
+.cache/
+.pytest_cache/
+.auth/
+parse_junit

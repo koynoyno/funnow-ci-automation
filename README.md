@@ -17,11 +17,11 @@ English | [繁體中文](README_zh.md)
 
 ## Description
 
-This proof-of-concept uses Playwright to test the [happy path of the booking flow](tests/booking.spec.ts) for every language on the FunNow website. It automatically runs on GitHub Actions [for each commit](https://github.com/koynoyno/funnow-ci-automation/actions) and Pull Request (CI/CD) and automatically uploads testing results to a TestRail instance using `trcli`.
+This proof-of-concept uses Playwright to test the [happy path of the booking flow](playwright-js/tests/booking.spec.ts) for every language on the FunNow website. It automatically runs on GitHub Actions [for each commit](https://github.com/koynoyno/funnow-ci-automation/actions) and Pull Request (CI/CD) and automatically uploads testing results to a TestRail instance using `trcli`.
 
 ## Technologies Used
 
-- Playwright + [POM design pattern](https://playwright.dev/docs/pom "POM design pattern") + [parameterized tests](https://playwright.dev/docs/test-parameterize "parameterized tests") + [fixtures](https://playwright.dev/docs/test-fixtures)
+- Playwright (TypeScript + Python) + [POM design pattern](https://playwright.dev/docs/pom "POM design pattern") + [parameterized tests](https://playwright.dev/docs/test-parameterize "parameterized tests") + [fixtures](https://playwright.dev/docs/test-fixtures)
 - GitHub Actions + [caching](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows) + [secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
 - [trcli](https://github.com/gurock/trcli "trcli") (to automatically upload screenshots of failed tests to a TestRail instance)
 
@@ -36,7 +36,7 @@ Make sure test user has confirmed their phone number.
 
 Open a terminal, run `npm install`, and after that, you can launch tests using the `npx playwright test` command. Test suite runs against staging. 
 
-## Project structure
+## Project structure (TypeScript)
 ```
 ├── data # various test data
 │   ├── auth.ts
@@ -58,7 +58,7 @@ Open a terminal, run `npm install`, and after that, you can launch tests using t
 
 ## ⚠️ Important to note
 
-To make the system-under-test (SUT) more testable, it is **[HIGHLY SUGGESTED](https://playwright.dev/docs/locators#locate-by-test-id)** to implement `data-testid` attributes. Because the SUT doesn't use `data-testid`, locators are [brittle](pages/branchPage.ts#L25) and [unreadable](pages/branchPage.ts#L19). This makes the automation process unnecessarily complex and wastes the developers' time.
+To make the system-under-test (SUT) more testable, it is **[HIGHLY SUGGESTED](https://playwright.dev/docs/locators#locate-by-test-id)** to implement `data-testid` attributes. Because the SUT doesn't use `data-testid`, locators are brittle and unreadable. This makes the automation process unnecessarily complex.
 
 
 ## Issues & Tradeoffs
@@ -84,11 +84,11 @@ API error as follows:
 
 This issue might be resolved with proper teardown, where bookings made are removed from the database. However, I didn't have access to the database while implementing this proof-of-concept.
 
-## What is the [bugs.spec.ts](tests/bugs.spec.ts) file?
+## What is the [bugs.spec.ts (JS)](playwright-js/tests/bugs.spec.ts) / [test_bugs.py (Python)](playwright-python/tests/test_bugs.py) file?
 
 Several issues were found during testing. 
 
-Some of them are easily verifiable, so they were implemented in the `bugs.spec.ts` file. These tests are [expected to fail](https://playwright.dev/docs/api/class-test#test-fail-1) unless the related bugs are fixed.
+Some of them are easily verifiable, so they were implemented in the `bugs.spec.ts` / `test_bugs.py` files. These tests are [expected to fail](https://playwright.dev/docs/api/class-test#test-fail-1) unless the related bugs are fixed.
 
 
 ## trcli explanation
