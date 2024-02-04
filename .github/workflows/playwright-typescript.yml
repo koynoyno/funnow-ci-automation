@@ -1,0 +1,58 @@
+name: Playwright Tests (TypeScript)
+on:
+  push:
+    branches: [ main, master ]
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    branches: [ main, master ]
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  Playwright-TypeScript:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./playwright-js
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 18
+    - uses: actions/cache@v4
+      id: playwright-cache
+      with:
+        path: |
+          ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+    - name: Install dependencies
+      id: install
+      run: npm ci
+    - run: npx playwright install --with-deps
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
+    - name: Run Playwright (TypeScript) tests
+      run: npx playwright test
+      env:
+        MYFUNNOW_USERNAME: ${{ secrets.MYFUNNOW_USERNAME }}
+        MYFUNNOW_PASSWORD: ${{ secrets.MYFUNNOW_PASSWORD }}
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-report-typescript
+        path: playwright-js/test-results
+        retention-days: 7
+    - name: Upload results to TestRail
+      if: steps.install.outcome == 'success'
+      run: |
+        pip install trcli
+        trcli -y \
+          -h ${{ secrets.TRCLI_INSTANCE }} \
+          --project "FunNow CI" \
+          -u ${{ secrets.TRCLI_USERNAME }} \
+          -p ${{ secrets.TRCLI_PASSWORD }} \
+          parse_junit \
+          --title "Playwright JS Tests from GitHub workflow" \
+          --run-description ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} \
+          --file "./test-results/junit-report.xml"
