@@ -20,7 +20,7 @@
 
 ## 使用技術
 
-- Playwright + [POM 設計模式](https://playwright.dev/docs/pom "POM 設計模式") + [參數化測試](https://playwright.dev/docs/test-parameterize "參數化測試") + [固件](https://playwright.dev/docs/test-fixtures)
+- Playwright (TypeScript + Python) + [POM 設計模式](https://playwright.dev/docs/pom "POM 設計模式") + [參數化測試](https://playwright.dev/docs/test-parameterize "參數化測試") + [固件](https://playwright.dev/docs/test-fixtures)
 - GitHub Actions + [快取](https://docs.github.com/zh/actions/using-workflows/caching-dependencies-to-speed-up-workflows) + [密碼](https://docs.github.com/zh/actions/security-guides/using-secrets-in-github-actions)
 - [trcli](https://github.com/gurock/trcli "trcli")（自動將失敗測試的截圖上傳到 TestRail 實例）
 
@@ -35,7 +35,7 @@ MYFUNNOW_PASSWORD=<password>
 
 打開終端，`npm install`，之後你可以使用 `npx playwright test` 命令啟動測試。 測試套件針對暫存環境運行。
 
-## 專案結構
+## 專案結構（TypeScript）
 ```
 ├── data # 各種測試數據
 │   ├── auth.ts
@@ -57,7 +57,7 @@ MYFUNNOW_PASSWORD=<password>
 
 ## ⚠️ 重要提示
 
-為了使被測系統（system-under-test, SUT）更容易測試，[強烈建議](https://playwright.dev/docs/locators#locate-by-test-id)實施 `data-testid` 屬性。因為 SUT 沒有使用 `data-testid`，定位器變得 [脆弱](pages/branchPage.ts#L25) 和 [難以閱讀](pages/branchPage.ts#L19)，這使得自動化過程不必要地複雜，並浪費開發人員的時間。
+為了使被測系統（system-under-test, SUT）更容易測試，[強烈建議](https://playwright.dev/docs/locators#locate-by-test-id)實施 `data-testid` 屬性。因為 SUT 沒有使用 `data-testid`，定位器變得脆弱和難以閱讀，這使得自動化過程不必要地複雜。
 
 ## 問題與權衡
 
@@ -81,11 +81,11 @@ API 錯誤如下：
 
 這個問題可以通過適當的拆解來解決，其中已製作的預訂將從數據庫中移除，但在實施這個概念驗證期間，我無法訪問數據庫。
 
-## [bugs.spec.ts](tests/bugs.spec.ts) 檔案是什麼？
+## [bugs.spec.ts (JS)](playwright-js/tests/bugs.spec.ts) / [test_bugs.py (Python)](playwright-python/tests/test_bugs.py) 檔案是什麼？
 
 在測試過程中發現了幾個問題。
 
-一些容易驗證，因此它們被實現在 `bugs.spec.ts` 檔案中。這些測試是[預期失敗的](https://playwright.dev/docs/api/class-test#test-fail-1)，除非相關的錯誤被修復。
+一些容易驗證，因此它們被實現在 `bugs.spec.ts` / `test_bugs.py` 檔案中。這些測試是[預期失敗的](https://playwright.dev/docs/api/class-test#test-fail-1)，除非相關的錯誤被修復。
 
 
 ## trcli 說明
