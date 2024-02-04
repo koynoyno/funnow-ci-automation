@@ -89,7 +89,7 @@ jobs:
       run: pytest \
              --tracing=retain-on-failure \
              --screenshot=only-on-failure \
-             --junitxml="test-results/junit-report.xml" 
+             --junitxml="test-results/junit-report.xml" \
              "./tests"
       env:
         MYFUNNOW_USERNAME: ${{ secrets.MYFUNNOW_USERNAME }}
