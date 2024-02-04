@@ -86,11 +86,12 @@ jobs:
           ~/.cache/ms-playwright
         key: ${{ runner.os }}-playwright-${{ hashFiles('**/requirements.txt') }}
     - name: Run Playwright (Python) tests
-      run: pytest \
-             --tracing=retain-on-failure \
-             --screenshot=only-on-failure \
-             --junitxml="test-results/junit-report.xml" \
-             "./tests"
+      run: |
+        pytest \
+          --tracing=retain-on-failure \
+          --screenshot=only-on-failure \
+          --junitxml="test-results/junit-report.xml" \
+          "./tests"
       env:
         MYFUNNOW_USERNAME: ${{ secrets.MYFUNNOW_USERNAME }}
         MYFUNNOW_PASSWORD: ${{ secrets.MYFUNNOW_PASSWORD }}
