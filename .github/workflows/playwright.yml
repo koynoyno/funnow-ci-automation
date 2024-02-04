@@ -30,6 +30,7 @@ jobs:
           ~/.cache/ms-playwright
         key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
+      id: install
       run: npm ci
     - run: npx playwright install --with-deps
       if: steps.playwright-cache.outputs.cache-hit != 'true'
@@ -45,7 +46,7 @@ jobs:
         path: playwright-js/test-results
         retention-days: 7
     - name: Upload results to TestRail
-      if: always()
+      if: steps.install.outcome == 'success'
       run: |
         pip install trcli
         trcli -y \
@@ -76,6 +77,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Ensure browsers are installed
+      id: install
       run: python -m playwright install --with-deps
     - uses: actions/cache@v4
       id: playwright-cache
@@ -99,7 +101,7 @@ jobs:
         path: playwright-python/test-results/
         retention-days: 7
     - name: Upload results to TestRail
-      if: always()
+      if: steps.install.outcome == 'success'
       run: |
         pip install trcli
         trcli -y \
