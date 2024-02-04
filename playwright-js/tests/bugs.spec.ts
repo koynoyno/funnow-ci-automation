@@ -9,6 +9,8 @@ test.use({
   locale: 'en',
 });
 
+test.describe.configure({ retries: 0 });
+
 // BUG 'Category' button is not visible after selecting a category
 test('Category button is visible after selecting a category', async ({ page }) => {
   test.fail();
@@ -28,7 +30,7 @@ test('Branch link opens a branch page', async ({ page }) => {
   test.fail();
   await page.goto('/regions/1/search');
   await page.getByLabel('Goto Page 46').click();
-  const branchLink = await page.getByRole('link', { name: 'Hot 哈拉影城 From TWD 240 0 (0)' });
+  const branchLink = await page.getByRole('link', { name: 'MUVIE' });
   const branchUrl = await branchLink.getAttribute('href');
   await page.goto(branchUrl as string);
   // bug here

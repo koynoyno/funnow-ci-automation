@@ -29,7 +29,7 @@ def test_branch_link_opens_a_branch_page(set_up: Page):
   page = set_up
   page.goto("/regions/1/search");
   page.get_by_label("Goto Page 46").click()
-  branch_link = page.get_by_role('link', name="Hot 哈拉影城 From TWD 240 0 (0)" )
+  branch_link = page.get_by_role('link', name="MUVIE" )
   branch_url = branch_link.get_attribute('href')
   page.goto(branch_url)
   # bug here
