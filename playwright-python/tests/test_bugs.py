@@ -17,6 +17,8 @@ def test_category_button_is_visible_after_selecting_a_category(set_up: Page):
   # bug here
   expect(page.get_by_role('button', name='Category' ),
     "Category button should still be visible").to_be_visible()
+  page.close()
+  
 
 
 
@@ -32,3 +34,5 @@ def test_branch_link_opens_a_branch_page(set_up: Page):
   page.goto(branch_url)
   # bug here
   expect(page, "Branch page should be opened").to_have_url(branch_url)
+  page.close()
+

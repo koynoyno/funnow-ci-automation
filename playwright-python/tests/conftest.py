@@ -65,5 +65,3 @@ def set_up(browser: Browser):
                                   timezone_id='Asia/Taipei',)
     page = context.new_page()
     yield page
-    context.close()
-    browser.close()
