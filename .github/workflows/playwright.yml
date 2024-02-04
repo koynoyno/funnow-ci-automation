@@ -1,4 +1,4 @@
-name: Playwright Tests (JS)
+name: Playwright Tests
 on:
   push:
     branches: [ main, master, playwright-python ]
@@ -10,11 +10,14 @@ on:
       - '**.md'
 
 jobs:
-  
+
   # javascript
   Playwright-JS:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./playwright-js
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -53,12 +56,15 @@ jobs:
           parse_junit \
           --title "Playwright JS Tests from GitHub workflow" \
           --run-description ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} \
-          --file "./playwright-js/test-results/junit-report.xml"
+          --file "./test-results/junit-report.xml"
 
   # python
   Playwright-Python:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./playwright-python
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
@@ -105,4 +111,4 @@ jobs:
           parse_junit \
           --title "Playwright Python Tests from GitHub workflow" \
           --run-description ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} \
-          --file "./playwright-python/test-results/junit-report.xml"
+          --file "./test-results/junit-report.xml"
