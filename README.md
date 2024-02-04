@@ -17,7 +17,7 @@ English | [繁體中文](README_zh.md)
 
 ## Description
 
-This proof-of-concept uses Playwright to test the [happy path of the booking flow](playwright-js/tests/booking.spec.ts) for every language on the FunNow website. It automatically runs on GitHub Actions [for each commit](https://github.com/koynoyno/funnow-ci-automation/actions) and Pull Request (CI/CD) and automatically uploads testing results to a TestRail instance using `trcli`.
+This proof-of-concept uses Playwright to test the [happy path of the booking flow](playwright-typescript/tests/booking.spec.ts) for every language on the FunNow website. It automatically runs on GitHub Actions [for each commit](https://github.com/koynoyno/funnow-ci-automation/actions) and Pull Request (CI/CD) and automatically uploads testing results to a TestRail instance using `trcli`.
 
 ## Technologies Used
 
@@ -84,7 +84,7 @@ API error as follows:
 
 This issue might be resolved with proper teardown, where bookings made are removed from the database. However, I didn't have access to the database while implementing this proof-of-concept.
 
-## What is the [bugs.spec.ts (JS)](playwright-js/tests/bugs.spec.ts) / [test_bugs.py (Python)](playwright-python/tests/test_bugs.py) file?
+## What is the [bugs.spec.ts (JS)](playwright-typescript/tests/bugs.spec.ts) / [test_bugs.py (Python)](playwright-python/tests/test_bugs.py) file?
 
 Several issues were found during testing. 
 

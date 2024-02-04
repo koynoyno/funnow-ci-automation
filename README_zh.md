@@ -16,7 +16,7 @@
 
 ## 描述
 
-此概念證明使用 Playwright 測試 FunNow 網站所有語言的[預訂流程正常路徑](playwright-js/tests/booking.spec.ts)。[每次提交](https://github.com/koynoyno/funnow-ci-automation/actions)和拉取請求時，它會自動在 GitHub Actions 上運行（CI/CD），並使用 `trcli` 自動將測試結果上傳到 TestRail 實例。
+此概念證明使用 Playwright 測試 FunNow 網站所有語言的[預訂流程正常路徑](playwright-typescript/tests/booking.spec.ts)。[每次提交](https://github.com/koynoyno/funnow-ci-automation/actions)和拉取請求時，它會自動在 GitHub Actions 上運行（CI/CD），並使用 `trcli` 自動將測試結果上傳到 TestRail 實例。
 
 ## 使用技術
 
@@ -81,7 +81,7 @@ API 錯誤如下：
 
 這個問題可以通過適當的拆解來解決，其中已製作的預訂將從數據庫中移除，但在實施這個概念驗證期間，我無法訪問數據庫。
 
-## [bugs.spec.ts (JS)](playwright-js/tests/bugs.spec.ts) / [test_bugs.py (Python)](playwright-python/tests/test_bugs.py) 檔案是什麼？
+## [bugs.spec.ts (JS)](playwright-typescript/tests/bugs.spec.ts) / [test_bugs.py (Python)](playwright-python/tests/test_bugs.py) 檔案是什麼？
 
 在測試過程中發現了幾個問題。
 

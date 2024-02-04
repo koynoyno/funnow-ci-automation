@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./playwright-js
+        working-directory: ./playwright-typescript
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -41,7 +41,7 @@ jobs:
       if: always()
       with:
         name: playwright-report-typescript
-        path: playwright-js/test-results
+        path: playwright-typescript/test-results
         retention-days: 7
     - name: Upload results to TestRail
       if: steps.install.outcome == 'success'
@@ -53,6 +53,6 @@ jobs:
           -u ${{ secrets.TRCLI_USERNAME }} \
           -p ${{ secrets.TRCLI_PASSWORD }} \
           parse_junit \
-          --title "Playwright JS Tests from GitHub workflow" \
+          --title "Playwright TypeScript Tests from GitHub workflow" \
           --run-description ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} \
           --file "./test-results/junit-report.xml"
