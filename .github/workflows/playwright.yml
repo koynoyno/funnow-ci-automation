@@ -73,7 +73,6 @@ jobs:
         python-version: '3.11'
     - name: Install dependencies
       run: |
-        cd playwright-python
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Ensure browsers are installed
