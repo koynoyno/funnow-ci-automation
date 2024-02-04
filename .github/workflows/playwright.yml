@@ -42,7 +42,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: playwright-report
+        name: playwright-report-javascript
         path: playwright-js/test-results
         retention-days: 7
     - name: Upload results to TestRail
@@ -98,7 +98,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: playwright-report
+        name: playwright-report-python
         path: playwright-python/test-results/
         retention-days: 7
     - name: Upload results to TestRail
