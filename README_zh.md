@@ -6,7 +6,7 @@
 </p>
 <div align="center">
 	
-[![Playwright 測試](https://github.com/koynoyno/funnow-ci-automation/actions/workflows/playwright.yml/badge.svg)](https://github.com/koynoyno/funnow-ci-automation/actions/workflows/playwright.yml)
+[![Playwright Tests (TypeScript)](https://github.com/koynoyno/funnow-ci-automation/actions/workflows/playwright-typescript.yml/badge.svg)](https://github.com/koynoyno/funnow-ci-automation/actions/workflows/playwright-typescript.yml) [![Playwright Tests (Python)](https://github.com/koynoyno/funnow-ci-automation/actions/workflows/playwright-python.yml/badge.svg)](https://github.com/koynoyno/funnow-ci-automation/actions/workflows/playwright-python.yml)
 
 [English](README.md) | 繁體中文
 
