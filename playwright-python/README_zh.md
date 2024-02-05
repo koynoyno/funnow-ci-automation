@@ -1,3 +1,9 @@
+<div align="center">
+
+[English](README.md) | 繁體中文
+
+</div>
+
 ## 開始使用
 
 該項目可以在本地運行。克隆該倉庫並在 `playwright-python` 文件夾中創建一個 `.env` 檔案。在檔案中，使用以下結構提供一個測試用戶的電子郵件和密碼：

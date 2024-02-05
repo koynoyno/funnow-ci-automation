@@ -1,3 +1,9 @@
+<div align="center">
+
+English | [繁體中文](README_zh.md)
+
+</div>
+
 ## Getting Started
 
 The project can be run locally. Clone the repo and create a `.env` file in the `playwright-python` folder. Inside the file, provide the email and password for a test user using the following structure:
