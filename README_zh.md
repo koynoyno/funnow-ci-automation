@@ -26,14 +26,8 @@
 
 ## 開始使用
 
-項目可以在本地運行。克隆文件夾並在根文件夹中創建 `.env` 文件，在文件內使用以下結構提供測試用戶的電子郵件和密碼：
-```
-MYFUNNOW_USERNAME=<email>
-MYFUNNOW_PASSWORD=<password>
-```
-確保測試用戶已確認他們的電話號碼。
-
-打開終端，`npm install`，之後你可以使用 `npx playwright test` 命令啟動測試。 測試套件針對暫存環境運行。
+- [TypeScript](playwright-typescript/README_zh.md)
+- [Python](playwright-python/README_zh.md)
 
 ## 專案結構（TypeScript）
 ```
