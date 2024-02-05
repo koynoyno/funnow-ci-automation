@@ -30,3 +30,18 @@ python3 -m playwright install --with-deps
 ```
 
 之後，你可以使用 `pytest` 命令啟動測試。測試套件針對暫存環境運行。
+
+## 專案結構
+```
+├── data # 各種測試數據
+│   ├── credit_cards.py
+│   └── locales.py
+├── models # 頁面對象模型
+│   ├── booking
+│   ├── branch.py
+│   └── header.py
+└── tests 
+    ├── conftest.py # fixtures, 處理使用 API/UI 的授權邏輯
+    ├── test_booking.py # 預訂流程測試（正常路徑）
+    └── test_bugs.py # 網站現有錯誤
+```

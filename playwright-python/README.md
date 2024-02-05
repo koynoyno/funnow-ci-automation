@@ -29,3 +29,18 @@ python3 -m playwright install --with-deps
 ```
 
 After that, you can launch tests using the `pytest` command. Test suite runs against staging. 
+
+## Project structure
+```
+├── data # various test data
+│   ├── credit_cards.py
+│   └── locales.py
+├── models # Page Object Model
+│   ├── booking
+│   ├── branch.py
+│   └── header.py
+└── tests 
+    ├── conftest.py # fixtures, handles authorization logic using API/UI
+    ├── test_booking.py # booking flow (happy path)
+    └── test_bugs.py # existing bugs in web application
+```
