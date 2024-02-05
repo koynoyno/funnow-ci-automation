@@ -84,7 +84,7 @@ API error as follows:
 
 This issue might be resolved with proper teardown, where bookings made are removed from the database. However, I didn't have access to the database while implementing this proof-of-concept.
 
-## What is the [bugs.spec.ts (JS)](playwright-typescript/tests/bugs.spec.ts) / [test_bugs.py (Python)](playwright-python/tests/test_bugs.py) file?
+## What is the [bugs.spec.ts (TS)](playwright-typescript/tests/bugs.spec.ts) / [test_bugs.py (Python)](playwright-python/tests/test_bugs.py) file?
 
 Several issues were found during testing. 
 

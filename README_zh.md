@@ -81,7 +81,7 @@ API 錯誤如下：
 
 這個問題可以通過適當的拆解來解決，其中已製作的預訂將從數據庫中移除，但在實施這個概念驗證期間，我無法訪問數據庫。
 
-## [bugs.spec.ts (JS)](playwright-typescript/tests/bugs.spec.ts) / [test_bugs.py (Python)](playwright-python/tests/test_bugs.py) 檔案是什麼？
+## [bugs.spec.ts (TS)](playwright-typescript/tests/bugs.spec.ts) / [test_bugs.py (Python)](playwright-python/tests/test_bugs.py) 檔案是什麼？
 
 在測試過程中發現了幾個問題。
 
