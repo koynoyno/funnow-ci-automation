@@ -7,7 +7,6 @@ const testRailOptions = {
 };
 
 export default defineConfig({
-  timeout: 30 * 1000,
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
