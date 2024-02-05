@@ -30,26 +30,6 @@ This proof-of-concept uses Playwright to test the [happy path of the booking flo
 - [TypeScript](playwright-typescript/README.md)
 - [Python](playwright-python/README.md)
 
-## Project structure (TypeScript)
-```
-├── data # various test data
-│   ├── auth.ts
-│   ├── creditCards.ts
-│   └── locales.ts
-├── fixtures
-│   ├── autoFixtures.ts # automatic fixtures, global "beforeAll"
-│   └── testrailScreenshot.fixture.ts # automatic uploading of failure screenshots
-├── pages # Page Object Model
-│   ├── bookingFlow
-│   ├── branchPage.ts
-│   └── headerPage.ts
-└── tests
-    ├── booking.spec.ts # booking flow (happy path)
-    ├── bugs.spec.ts # existing bug in web application
-    └── helpers
-        └── auth.setup.ts # handles authorization logic using API/UI
-```
-
 ## ⚠️ Important to note
 
 To make the system-under-test (SUT) more testable, it is **[HIGHLY SUGGESTED](https://playwright.dev/docs/locators#locate-by-test-id)** to implement `data-testid` attributes. Because the SUT doesn't use `data-testid`, locators are brittle and unreadable. This makes the automation process unnecessarily complex.

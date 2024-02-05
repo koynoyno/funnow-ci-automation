@@ -29,26 +29,6 @@
 - [TypeScript](playwright-typescript/README_zh.md)
 - [Python](playwright-python/README_zh.md)
 
-## 專案結構（TypeScript）
-```
-├── data # 各種測試數據
-│   ├── auth.ts
-│   ├── creditCards.ts
-│   └── locales.ts
-├── fixtures
-│   ├── autoFixtures.ts # 自動化 fixtures, 全局 "beforeAll"
-│   └── testrailScreenshot.fixture.ts # 失敗截圖自動上傳
-├── pages # 頁面對象模型
-│   ├── bookingFlow
-│   ├── branchPage.ts
-│   └── headerPage.ts
-└── tests
-    ├── booking.spec.ts # 預訂流程測試（正常路徑）
-    ├── bugs.spec.ts # 網站現有錯誤
-    └── helpers
-        └── auth.setup.ts # 處理使用 API/UI 的授權邏輯
-```
-
 ## ⚠️ 重要提示
 
 為了使被測系統（system-under-test, SUT）更容易測試，[強烈建議](https://playwright.dev/docs/locators#locate-by-test-id)實施 `data-testid` 屬性。因為 SUT 沒有使用 `data-testid`，定位器變得脆弱和難以閱讀，這使得自動化過程不必要地複雜。
