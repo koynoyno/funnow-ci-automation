@@ -19,7 +19,7 @@ AUTH_DATA = {'username': os.environ["MYFUNNOW_USERNAME"],
 output_file = Path(AUTH_FILE)
 output_file.parent.mkdir(exist_ok=True, parents=True)
 
-#UI authentication, slower
+# UI authentication, slower
 # @pytest.fixture(scope='session', autouse=True)
 # def authenticate(browser: Browser):
 #     context = browser.new_context(base_url=BASE_URL)
@@ -48,13 +48,6 @@ def authenticate(playwright: Playwright):
     api_request_context.storage_state(path=AUTH_FILE)
     yield 
     # authentication.dispose()
-
-
-# TestRail screenshots after crash
-# @pytest.fixture(scope="function", autouse=True)
-# def testrail_screenshot(browser: Browser):
-#     yield
-
 
 # Browser context handling
 @pytest.fixture(scope='module')

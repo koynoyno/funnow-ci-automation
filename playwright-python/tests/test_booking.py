@@ -13,7 +13,7 @@ from models.header import HeaderPage
 from models.booking.details import DetailsPage
 from models.booking.payment import PaymentPage
 
-# # data
+# data
 from data.locales import locales, Locale
 
 BASE_URL = "https://stg2-www.myfunnow.com/"
