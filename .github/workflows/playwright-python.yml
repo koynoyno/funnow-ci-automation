@@ -2,14 +2,14 @@ name: Playwright Tests (Python)
 on:
   push:
     branches: [ main, master ]
-    paths: 'playwright-python/**'
-    paths-ignore:
-      - '**.md'
+    paths: 
+      - 'playwright-python/**'
+      - '!**.md'
   pull_request:
     branches: [ main, master ]
-    paths: 'playwright-python/**'
-    paths-ignore:
-      - '**.md'
+    paths: 
+      - 'playwright-python/**'
+      - '!**.md'
 
 jobs:
   Playwright-Python:

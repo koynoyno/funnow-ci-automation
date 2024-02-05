@@ -2,14 +2,14 @@ name: Playwright Tests (TypeScript)
 on:
   push:
     branches: [ main, master ]
-    paths: 'playwright-typescript/**'
-    paths-ignore:
-      - '**.md'
+    paths: 
+      - 'playwright-typescript/**'
+      - '!**.md'
   pull_request:
     branches: [ main, master ]
-    paths: 'playwright-typescript/**'
-    paths-ignore:
-      - '**.md'
+    paths: 
+      - 'playwright-typescript/**'
+      - '!**.md'
 
 jobs:
   Playwright-TypeScript:
