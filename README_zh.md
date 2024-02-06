@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/koynoyno/funnow-ci-automation/">
+  <a href="https://myfunnow.com/">
     <img width="200" src="https://github.com/koynoyno/funnow-ci-automation/assets/46102189/b24a85c8-cebc-4203-8ddd-22536079c725">
   </a>
 	
@@ -16,7 +16,7 @@
 
 ## 描述
 
-此概念證明使用 Playwright 測試 FunNow 網站所有語言的[預訂流程正常路徑](playwright-typescript/tests/booking.spec.ts)。[每次提交](https://github.com/koynoyno/funnow-ci-automation/actions)和拉取請求時，它會自動在 GitHub Actions 上運行（CI/CD），並使用 `trcli` 自動將測試結果上傳到 TestRail 實例。
+此概念證明使用 Playwright 測試 [FunNow](https://myfunnow.com/) 網站所有語言的[預訂流程正常路徑](playwright-typescript/tests/booking.spec.ts)。[每次提交](https://github.com/koynoyno/funnow-ci-automation/actions)和拉取請求時，它會自動在 GitHub Actions 上運行（CI/CD），並使用 `trcli` 自動將測試結果上傳到 TestRail 實例。
 
 ## 使用技術
 
