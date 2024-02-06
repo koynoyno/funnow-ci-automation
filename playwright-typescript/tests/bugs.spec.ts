@@ -30,7 +30,7 @@ test('Branch link opens a branch page', async ({ page }) => {
   test.fail();
   await page.goto('/regions/1/search');
   await page.getByLabel('Goto Page 46').click();
-  const branchLink = await page.getByRole('link', { name: 'MUVIE' });
+  const branchLink = await page.getByRole('link', { name: 'VIESHOW' }).first();
   const branchUrl = await branchLink.getAttribute('href');
   await page.goto(branchUrl as string);
   // bug here
