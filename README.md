@@ -17,7 +17,7 @@ English | [繁體中文](README_zh.md)
 
 ## Description
 
-This proof-of-concept uses Playwright to test the [happy path of the booking flow](playwright-typescript/tests/booking.spec.ts) for every language on the [FunNow](https://myfunnow.com/) website. It automatically runs on GitHub Actions [for each commit](https://github.com/koynoyno/funnow-ci-automation/actions) and Pull Request (CI/CD) and automatically uploads testing results to a TestRail instance using `trcli`.
+This proof-of-concept uses Playwright to test the happy path of the booking flow ([TypeScript](playwright-typescript/tests/booking.spec.ts), [Python](playwright-python/tests/test_booking.py)) for every available locale on the [FunNow](https://myfunnow.com/) website. It automatically runs on GitHub Actions [for each commit](https://github.com/koynoyno/funnow-ci-automation/actions) and Pull Request (CI/CD) and automatically uploads testing results to a TestRail instance using `trcli`.
 
 ## Technologies Used
 
