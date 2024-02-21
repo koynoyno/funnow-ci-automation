@@ -1,5 +1,5 @@
 # Note: booking flow (happy path) 
-# Tests is parameterized, to test the booking flow in different locales.
+# Tests are parameterized in order to test the booking flow in different locales.
 # Tests are using page objects to adhere to SOLID principles.
 
 import re
